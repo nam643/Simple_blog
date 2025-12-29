@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="viewblog.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Cedarville+Cursive&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <%-include("partials/header.ejs") %>
+    <div class="viewblog-title">My interesting stories</div>
+    <div class="viewblog-container">
+        <%if(locals.listContent){%>
+            <%for(let i=0;i<listContent.length;i++){%>
+                <form action="/content" method="POST" class="card-form">
+                    <input type="hidden" name="idx" value="<%= i %>">
+
+                    <div class="card">
+                        <p class="topic"><%= listContent[i].topic %></p>
+                        <p class="title"><%= listContent[i].title %></p>
+                        <p class="date"><%= listContent[i].date %></p>
+                        <p class="description"><%= listContent[i].description %></p>
+
+                        <div class="btn">
+                            <button type="submit" name="action" value="edit">Edit</button>
+                            <button type="submit" name="action" value="delete">Delete</button>
+                            <button type="submit" name="action" value="view">Open</button>
+                        </div>
+                    </div>
+                </form>
+            <%}%>
+        <%}%>
+    </div>
+    <%-include("partials/footer.ejs") %>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+</body>
+</html>

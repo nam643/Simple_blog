@@ -1,0 +1,248 @@
+/* =========================
+   Global / Design tokens
+========================= */
+:root{
+  --bg: #071a2b;
+  --surface: rgba(255,255,255,0.04);
+  --surface-2: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.10);
+
+  --text: #eaf2ff;
+  --muted: rgba(234,242,255,0.72);
+
+  --accent: #ff4d4f;
+
+  --shadow: 0 18px 40px rgba(0,0,0,0.35);
+  --shadow-soft: 0 10px 24px rgba(0,0,0,0.25);
+
+  --radius: 16px;
+}
+
+*{
+  box-sizing: border-box;
+  font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+html, body{
+  height: 100%;
+}
+
+body{
+  margin: 0;
+  background-color: #071a2b; /* solid navy */
+  color: var(--text);
+  padding-top: 10vh; /* header space */
+}
+
+/* Make room for fixed header + footer */
+body{
+  padding-top: 10vh;   /* header height */
+  padding-bottom: 6vh; /* footer */
+}
+
+/* =========================
+   Header (your .container)
+========================= */
+.container{
+  width: 100%;
+  height: 10vh;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 2rem;
+
+  background: rgba(5, 14, 60, 0.70);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.container .title{
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.container ul{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+li a{
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  opacity: 0.85;
+  padding: 0.35rem 0.15rem;
+  border-bottom: 2px solid transparent;
+  transition: opacity 0.15s ease, border-color 0.15s ease;
+}
+
+li a:hover{
+  opacity: 1;
+  border-bottom-color: rgba(255,255,255,0.65);
+}
+
+/* =========================
+   Footer
+========================= */
+footer{
+  position: fixed;
+  bottom: 0; left: 0;
+  width: 100%;
+  padding: 0.9rem 2rem;
+  color: var(--muted);
+
+  background: rgba(5, 14, 60, 0.55);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* =========================
+   Home page (your .main-container)
+========================= */
+.main-container{
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  text-align: center;
+
+  /* instead of absolute center */
+  padding: 7rem 0 4rem;
+}
+
+.main-container .main-title{
+  margin: 0 0 1.25rem;
+  font-size: clamp(2.4rem, 4vw, 4.4rem);
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.main-container .main-description{
+  margin: 0 0 1rem;
+  font-size: clamp(1.15rem, 2vw, 1.8rem);
+  color: rgba(255,77,79,0.85);
+}
+
+.main-container .main-detail{
+  display: inline-block;
+  margin-top: 1rem;
+
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+
+  padding: 0.7rem 1.1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.main-container .main-detail:hover{
+  transform: translateY(-2px);
+  background: var(--surface-2);
+}
+
+/* =========================
+   Create page (your form.create)
+========================= */
+form.create{
+  width: min(520px, 92%);
+  margin: 0 auto;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+form.create input[type="text"],
+form.create input[type="date"],
+form.create textarea{
+  width: 100%;
+  padding: 0.85rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.18);
+  color: var(--text);
+  outline: none;
+}
+
+form.create textarea{
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.55;
+}
+
+form.create input[type="text"]::placeholder,
+form.create textarea::placeholder{
+  color: rgba(234,242,255,0.55);
+}
+
+form.create input[type="submit"]{
+  margin-top: 0.25rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 0;
+  background: var(--accent);
+  color: #0b1320;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+form.create input[type="submit"]:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.02);
+}
+
+/* =========================
+   Content page (your .story / .content)
+========================= */
+.story{
+  width: min(900px, 92%);
+  margin: 0 auto;
+  padding: 2.5rem 0 9rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  gap: 1rem;
+  color: var(--text);
+}
+
+.story .title{
+  font-size: clamp(1.6rem, 2.3vw, 2.2rem);
+  font-weight: 800;
+  margin: 0;
+}
+
+.content{
+  white-space: pre-wrap; /* keep your line breaks */
+  width: 100%;
+  margin: 0;
+  color: rgba(234,242,255,0.86);
+  line-height: 1.8;
+
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.03);
+}

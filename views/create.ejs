@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= isEdit ? "Edit blog" : "Create new blog" %></title>
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %>
+
+    <form action="/blog" method="POST" class="create">
+      <!-- Hidden fields for edit mode -->
+      <input type="hidden" name="isEdit" value="<%= isEdit ? '1' : '0' %>">
+      <input type="hidden" name="idx" value="<%= isEdit ? idx : '' %>">
+
+      <input
+        type="text"
+        name="topic"
+        placeholder="Enter your topic here"
+        value="<%= card ? card.topic : '' %>"
+        required
+      />
+
+      <input
+        type="text"
+        name="title"
+        placeholder="Enter your title here"
+        value="<%= card ? card.title : '' %>"
+        required
+      />
+
+      <input
+        type="date"
+        name="date"
+        value="<%= card ? card.date : '' %>"
+        required
+      />
+
+      <textarea
+        rows="4"
+        placeholder="Short description"
+        name="description"
+        required
+      ><%= card ? card.description : '' %></textarea>
+
+      <textarea
+        rows="6"
+        placeholder="Your content goes here"
+        name="content"
+        required
+      ><%= card ? card.content : '' %></textarea>
+
+      <input type="submit" value="<%= isEdit ? 'Update' : 'Submit' %>" />
+    </form>
+
+    <%- include("partials/footer.ejs") %>
+  </body>
+</html>

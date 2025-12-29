@@ -1,0 +1,138 @@
+*{
+  font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.viewblog-title{
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 2.5rem 0 1.25rem;
+
+  font-size: clamp(2rem, 3vw, 3rem);
+  text-align: center;
+  color: rgba(234,242,255,0.95);
+  font-style: italic;
+  letter-spacing: 0.2px;
+}
+
+/* 3-column grid (responsive) */
+.viewblog-container{
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 0 0 3.5rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+/* Make it responsive without changing your HTML */
+@media (max-width: 980px){
+  .viewblog-container{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px){
+  .viewblog-container{ grid-template-columns: 1fr; }
+}
+
+.card-form{
+  margin: 0;
+}
+
+/* Your .card is a DIV now — keep it */
+.card{
+  background: linear-gradient(180deg, #ff4d4f, #ff3b3b);
+  border-radius: 18px;
+  padding: 1.4rem;
+
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Hover = subtle lift */
+.card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.34);
+}
+
+/* Text wrapping + prevent card growing too much */
+.card p{
+  margin: 0 0 0.65rem;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* keep the layout stable */
+.card{
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+.topic{
+  color: #081a33;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.title{
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.date{
+  color: rgba(255,255,255,0.78);
+  font-size: 0.9rem;
+}
+
+/* Clamp description so cards don’t stretch */
+.description{
+  color: rgba(255,255,255,0.92);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Buttons row */
+.btn{
+  margin-top: auto;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.btn button{
+  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.92);
+  color: #0b1320;
+
+  border-radius: 10px;
+  padding: 0.45rem 0.75rem;
+
+  font-weight: 700;
+  cursor: pointer;
+
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.btn button:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,1);
+}
+
+/* Make Delete visually distinct without new class names */
+.btn button[value="delete"]{
+  background: rgba(11,19,32,0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.28);
+}
+.btn button[value="delete"]:hover{
+  background: rgba(11,19,32,0.25);
+}
